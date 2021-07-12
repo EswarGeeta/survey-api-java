@@ -1,5 +1,7 @@
 package com.surveyapi.models;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
+
 import java.util.Arrays;
 
 class Question {
