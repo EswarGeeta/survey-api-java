@@ -1,12 +1,16 @@
 package com.surveyapi.models;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
 import java.util.Arrays;
 
 @DynamoDbBean
+@DynamoDBTable(tableName = "surveys")
 public class Survey {
     private int surveyId;
     private String name;
@@ -22,7 +26,7 @@ public class Survey {
 
     }
 
-    @DynamoDbPartitionKey
+    @DynamoDBHashKey
     public int getSurveyId() {
         return surveyId;
     }
@@ -37,7 +41,7 @@ public class Survey {
         this.name = name;
     }
 
-    @DynamoDBTypeConverted(converter = QuestionConverter.class)
+//    @DynamoDbConvertedBy(QuestionConverter.class)
     public Question getQuestions() {
         System.out.println("Going to get the questions from survey object/string");
         return questions;

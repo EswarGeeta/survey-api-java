@@ -1,10 +1,13 @@
 package com.surveyapi.models;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 import java.util.Arrays;
 
-class Question {
+@DynamoDBDocument
+public class Question {
     private String description;
     private String[] options;
 
